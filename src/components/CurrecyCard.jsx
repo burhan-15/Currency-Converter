@@ -1,5 +1,5 @@
 
-function CurrencyCard({ label, currency, setCurrency, amount, setAmount, optionList, isDisabled = false }) {
+function CurrencyCard({ label, currency, setCurrency, amount, setAmount, optionList, isDisabled = false, isSelectDisabled = false }) {
     
     function changeAmount(value) {
         const num = Number(value);
@@ -23,8 +23,9 @@ function CurrencyCard({ label, currency, setCurrency, amount, setAmount, optionL
                 <div className="relative">
                     <select
                         value={currency}
+                        disabled={isSelectDisabled}
                         onChange={(e) => setCurrency(e.target.value)}
-                        className="appearance-none bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 py-1.5 pl-3 pr-8 rounded-xl text-xs font-bold uppercase shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 cursor-pointer transition-all duration-200"
+                        className="appearance-none bg-white disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed hover:bg-slate-50 border border-slate-200 text-slate-700 py-1.5 pl-3 pr-8 rounded-xl text-xs font-bold uppercase shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 cursor-pointer transition-all duration-200"
                     >
                         {optionList?.map((opt) => (
                             <option value={opt} key={opt}>
