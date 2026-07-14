@@ -22,7 +22,6 @@ export default function useCurrencyInfo(currency, chosenDate) {
                 try {
                     response = await axios.get(url);
                 } catch (firstErr) {
-                    // If fetching today's rates fails (often because of publication latency), try to fall back to 'latest'
                     const todayStr = new Date().toISOString().split('T')[0];
                     if (dateTag === todayStr) {
                         console.warn(`Failed to fetch rates for today (${dateTag}), falling back to latest.`);
